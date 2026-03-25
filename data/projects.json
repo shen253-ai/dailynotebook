@@ -1,0 +1,14 @@
+{
+  "projects": [
+    {
+      "name": "Robotic Arm",
+      "progress": 0,
+      "todos": [
+        "驱动电路完成",
+        "gearbox完成",
+        "写控制程序",
+        "结构设计"
+      ]
+    }
+  ]
+}
