@@ -10,5 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Test run
-        run: echo "parser triggered"
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run parser
+        run: |
+          python .github/scripts/parse.py
+
+      - name: Commit JSON
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/projects.json
+          git commit -m "update projects" || echo "no changes"
+          git push
