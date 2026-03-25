@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .project { margin-bottom: 20px; }
+    .bar { background: #eee; height: 20px; border-radius: 10px; }
+    .fill { background: #4caf50; height: 100%; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>📊 Project Dashboard</h1>
+
+<div id="projects"></div>
+
+<script>
+fetch('_data/projects.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('projects');
+
+    data.projects.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'project';
+
+      div.innerHTML = `
+        <h2>${p.name}</h2>
+        <div class="bar">
+          <div class="fill" style="width:${p.progress}%"></div>
+        </div>
+        <p>${p.progress}%</p>
+        <ul>
+          ${p.todos.map(t => `<li>${t}</li>`).join('')}
+        </ul>
+      `;
+
+      container.appendChild(div);
+    });
+  });
+</script>
+
+</body>
+</html>
