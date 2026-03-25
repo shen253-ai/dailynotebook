@@ -15,7 +15,6 @@ for filename in os.listdir(POSTS_DIR):
         lines = f.readlines()
 
     for line in lines:
-        # 匹配任务
         match = re.match(r"- \[( |x)\] (.+?) #([\w-]+)", line.strip())
         if match:
             status, text, project = match.groups()
@@ -25,17 +24,25 @@ for filename in os.listdir(POSTS_DIR):
                     "name": project.replace("-", " ").title(),
                     "done": 0,
                     "total": 0,
-                    "todos": []
+                    "todos": [],
+                    "tasks": []   # ⭐ 新增
                 }
 
             projects[project]["total"] += 1
+
+            task = {
+                "text": text,
+                "done": status == "x"
+            }
+
+            projects[project]["tasks"].append(task)
 
             if status == "x":
                 projects[project]["done"] += 1
             else:
                 projects[project]["todos"].append(text)
 
-# 生成最终结构
+# 输出
 output = {"projects": []}
 
 for p in projects.values():
@@ -44,10 +51,10 @@ for p in projects.values():
     output["projects"].append({
         "name": p["name"],
         "progress": progress,
-        "todos": p["todos"]
+        "todos": p["todos"],
+        "tasks": p["tasks"]   # ⭐ 输出 tasks
     })
 
-# 写入 JSON
 os.makedirs("data", exist_ok=True)
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
