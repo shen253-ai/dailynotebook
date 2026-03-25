@@ -6,6 +6,24 @@
       "todos": [
         "写控制程序",
         "结构设计"
+      ],
+      "tasks": [
+        {
+          "text": "驱动电路完成",
+          "done": true
+        },
+        {
+          "text": "gearbox完成",
+          "done": true
+        },
+        {
+          "text": "写控制程序",
+          "done": false
+        },
+        {
+          "text": "结构设计",
+          "done": false
+        }
       ]
     }
   ]
