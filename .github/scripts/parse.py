@@ -1,22 +1,25 @@
 import os
-import re
 import json
+import re
 
-posts_dir = "_posts"
+POSTS_DIR = "_posts"
+OUTPUT_FILE = "data/projects.json"
+
 projects = {}
 
-pattern = re.compile(r"- \[( |x)\] (.+?) #([a-zA-Z0-9\-]+)")
-
-for filename in os.listdir(posts_dir):
+for filename in os.listdir(POSTS_DIR):
     if not filename.endswith(".md"):
         continue
 
-    with open(os.path.join(posts_dir, filename), "r", encoding="utf-8") as f:
-        content = f.read()
+    with open(os.path.join(POSTS_DIR, filename), "r", encoding="utf-8") as f:
+        lines = f.readlines()
 
-        matches = pattern.findall(content)
+    for line in lines:
+        # 匹配任务
+        match = re.match(r"- \[( |x)\] (.+?) #([\w-]+)", line.strip())
+        if match:
+            status, text, project = match.groups()
 
-        for status, text, project in matches:
             if project not in projects:
                 projects[project] = {
                     "name": project.replace("-", " ").title(),
@@ -46,6 +49,5 @@ for p in projects.values():
 
 # 写入 JSON
 os.makedirs("data", exist_ok=True)
-
-with open("data/projects.json", "w", encoding="utf-8") as f:
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
