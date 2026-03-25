@@ -2,6 +2,8 @@ name: Parse Daily Notes
 
 on:
   push:
+    paths:
+      - '_posts/**'
 
 jobs:
   build:
