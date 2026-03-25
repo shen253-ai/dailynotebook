@@ -25,6 +25,43 @@
           "done": false
         }
       ]
+    },
+    {
+      "name": "Project Manage Website",
+      "progress": 16,
+      "todos": [
+        "加AI功能",
+        "做桌面UI输入todo/project",
+        "思考项目进度展示方式",
+        "做提醒系统",
+        "优化网页UI设计"
+      ],
+      "tasks": [
+        {
+          "text": "在github上搭建出来",
+          "done": true
+        },
+        {
+          "text": "加AI功能",
+          "done": false
+        },
+        {
+          "text": "做桌面UI输入todo/project",
+          "done": false
+        },
+        {
+          "text": "思考项目进度展示方式",
+          "done": false
+        },
+        {
+          "text": "做提醒系统",
+          "done": false
+        },
+        {
+          "text": "优化网页UI设计",
+          "done": false
+        }
+      ]
     }
   ]
 }
