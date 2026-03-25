@@ -28,17 +28,11 @@ fetch('./data/projects.json')
 
       div.innerHTML = `
         <h2>${p.name}</h2>
-        <p>Status: ${p.status}</p>
 
         <div class="bar">
           <div class="fill" style="width:${p.progress}%"></div>
         </div>
         <p>${p.progress}%</p>
-
-        <h3>Modules</h3>
-        <ul>
-          ${p.modules.map(m => `<li>${m.name}: ${m.progress}%</li>`).join('')}
-        </ul>
 
         <h3>TODO</h3>
         <ul>
