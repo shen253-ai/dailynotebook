@@ -67,7 +67,7 @@
 <div class="container" id="projects"></div>
 
 <script>
-fetch('./data/projects.json')
+fetch('./data/projects.json?t=' + new Date().getTime())
   .then(res => res.json())
   .then(data => {
     const container = document.getElementById('projects');
