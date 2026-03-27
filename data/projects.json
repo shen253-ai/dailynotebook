@@ -1,6 +1,19 @@
 {
   "projects": [
     {
+      "name": "Prl",
+      "progress": 0,
+      "todos": [
+        "找模型"
+      ],
+      "tasks": [
+        {
+          "text": "找模型",
+          "done": false
+        }
+      ]
+    },
+    {
       "name": "Robotic Arm",
       "progress": 50,
       "todos": [
