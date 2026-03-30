@@ -4,9 +4,14 @@
       "name": "Prl",
       "progress": 0,
       "todos": [
+        "找模型",
         "找模型"
       ],
       "tasks": [
+        {
+          "text": "找模型",
+          "done": false
+        },
         {
           "text": "找模型",
           "done": false
